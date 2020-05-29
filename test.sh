@@ -28,8 +28,8 @@ SERVER_PATH="/Library/FileMaker Server"
 # --- you shouldn't need to edit anything below this line
 #
 
-WEB_ROOT="${SERVER_PATH}/HTTPServer/htdocs"
+#WEB_ROOT="${SERVER_PATH}/HTTPServer/htdocs"
 
 
 # Get the certificate
-certbot certonly --test-cert --webroot -w "$WEB_ROOT" -d $DOMAIN_1 -d $DOMAIN_2 -d $DOMAIN_3 --agree-tos -m "$EMAIL" --preferred-challenges "http" -n --config-dir $LE_CONFIG_DIR
+certbot certonly --test-cert --standalone -d $DOMAIN_1 -d $DOMAIN_2 -d $DOMAIN_3 --agree-tos -m "$EMAIL" --preferred-challenges "http" -n --config-dir $LE_CONFIG_DIR
