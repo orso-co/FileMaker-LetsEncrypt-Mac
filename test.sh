@@ -10,9 +10,7 @@
 
 # Change the domain variable to the domain/subdomain for which you would like
 # an SSL Certificate
-DOMAIN_1="os.orso.co"
-DOMAIN_2="me.orso.co"
-DOMAIN_3="arpa.orso.co"
+DOMAIN="os.orso.co"
 
 # Change the contact email address to your real email address so that Let's Encrypt
 # can contact you if there are any problems #>
@@ -32,4 +30,4 @@ SERVER_PATH="/Library/FileMaker Server"
 
 
 # Get the certificate
-certbot certonly --test-cert --standalone -d $DOMAIN_1 -d $DOMAIN_2 -d $DOMAIN_3 --agree-tos -m "$EMAIL" --preferred-challenges "http" -n --config-dir $LE_CONFIG_DIR
+certbot certonly --test-cert --standalone -d $DOMAIN --agree-tos -m "$EMAIL" --preferred-challenges "http" -n --config-dir $LE_CONFIG_DIR
