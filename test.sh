@@ -16,18 +16,9 @@ DOMAIN="os.orso.co"
 # can contact you if there are any problems #>
 EMAIL="it@orso.co"
 
-# Enter the path to the configuration directory for Let's Encrypt
-LE_CONFIG_DIR="/usr/local/etc/letsencrypt"
-
 # Enter the path to your FileMaker Server directory, ending in a slash
 SERVER_PATH="/Library/FileMaker Server"
 
-#
-# --- you shouldn't need to edit anything below this line
-#
-
-#WEB_ROOT="${SERVER_PATH}/HTTPServer/htdocs"
-
 
 # Get the certificate
-certbot certonly --test-cert --standalone -d $DOMAIN --agree-tos -m "$EMAIL" --preferred-challenges "http" -n --config-dir $LE_CONFIG_DIR
+certbot certonly --test-cert --standalone -d $DOMAIN --agree-tos -m "$EMAIL" --preferred-challenges "http" -n
