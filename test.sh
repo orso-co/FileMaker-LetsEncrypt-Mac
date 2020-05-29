@@ -25,19 +25,19 @@ LE_CONFIG_DIR="/etc/letsencrypt"
 # Get the certificate
 certbot certonly --test-cert --standalone -d $DOMAIN --agree-tos -m "$EMAIL" --preferred-challenges "http" -n
 
-cp "{$LE_CONFIG_DIR}/live/${DOMAIN}/fullchain.pem" "${SERVER_PATH}/CStore/fullchain.pem"
-cp "{$LE_CONFIG_DIR}/live/${DOMAIN}/privkey.pem" "${SERVER_PATH}/CStore/privkey.pem"
+cp "$LE_CONFIG_DIR/live/$DOMAIN/fullchain.pem" "$SERVER_PATH/CStore/fullchain.pem"
+cp "$LE_CONFIG_DIR/live/$DOMAIN/privkey.pem" "$SERVER_PATH/CStore/privkey.pem"
 
-chmod 640 "${SERVER_PATH}/CStore/privkey.pem"
+chmod 640 "$SERVER_PATH/CStore/privkey.pem"
 
 # Move an old certificate, if there is one, to prevent an error
-mv "${SERVER_PATH}/CStore/serverKey.pem" "${SERVER_PATH}/CStore/serverKey-old.pem"
+mv "$SERVER_PATH/CStore/serverKey.pem" "$SERVER_PATH/CStore/serverKey-old.pem"
 
 # Remove the old certificate
 fmsadmin certificate delete
 
 # Install the certificate
-fmsadmin certificate import "${SERVER_PATH}/CStore/fullchain.pem" --keyfile "${SERVER_PATH}/CStore/privkey.pem" -y
+fmsadmin certificate import "$SERVER_PATH/CStore/fullchain.pem" --keyfile "$SERVER_PATH/CStore/privkey.pem" -y
 
 # Stop FileMaker Server
 launchctl stop com.filemaker.fms
