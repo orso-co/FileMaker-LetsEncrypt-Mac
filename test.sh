@@ -22,6 +22,9 @@ SERVER_PATH="/Library/FileMaker Server"
 # Enter the path to the Let's Encrypt config and key directory
 LE_CONFIG_DIR="/etc/letsencrypt"
 
+# Stop FileMaker Server
+launchctl stop com.filemaker.fms
+
 # Get the certificate
 certbot certonly --test-cert --standalone -d $DOMAIN --agree-tos -m "$EMAIL" --preferred-challenges "http" -n
 
@@ -38,9 +41,6 @@ fmsadmin certificate delete
 
 # Install the certificate
 fmsadmin certificate import "$SERVER_PATH/CStore/fullchain.pem" --keyfile "$SERVER_PATH/CStore/privkey.pem" -y
-
-# Stop FileMaker Server
-launchctl stop com.filemaker.fms
 
 # Wait 15 seconds for it to stop
 sleep 15s
