@@ -10,7 +10,7 @@ How to use it (should work, without guarantee):
 5. find out what shell you use: `echo $SHELL`
 6. the file you'll need is either "GetSSH.zsh" if your are using the zsh shell or propably "GetSSH.sh" for bash or sh
 7. edit the file and change the domain name on line 13
-8. run the script: either `sudo ./GetSSH.zsh` or  `sudo GetSSH.sh` depending on your shell
+8. run the script: either `sudo ./GetSSH.zsh` or  `sudo ./GetSSH.sh` depending on your shell
 9. good luck!
 
 
